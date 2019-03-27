@@ -1,0 +1,10 @@
+src\database\model\User.class
+src\database\services\UserService.class
+src\database\model\constants\Role.class
+src\database\model\constants\Gender.class
+src\database\config\DbConfig.class
+src\database\constants\DatabaseConst.class
+src\database\repositories\UserDataRestRepository.class
+src\database\services\UserServicesImpl.class
+src\database\constants\HibernateConst.class
+src\database\model\Player.class
