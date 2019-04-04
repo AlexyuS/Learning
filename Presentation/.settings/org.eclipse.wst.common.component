@@ -6,7 +6,7 @@
         <dependent-module archiveName="Database-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Database/Database">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="RestData-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RestData/RestData">
+        <dependent-module archiveName="Business-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Business/Business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/Presentation/build/classes"/>

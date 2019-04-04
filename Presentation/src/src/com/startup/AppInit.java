@@ -9,7 +9,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import src.com.config.MvcConfig;
 import src.database.config.DbConfig;
-import src.restData.config.RestDataConfig;
  
 public class AppInit implements WebApplicationInitializer {
  
@@ -21,7 +20,7 @@ public class AppInit implements WebApplicationInitializer {
         container.addListener(new ContextLoaderListener(rootContext));
         // Create the dispatcher servlet's Spring application context
         AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
-        dispatcherServlet.register(DbConfig.class,MvcConfig.class,RestDataConfig.class);
+        dispatcherServlet.register(DbConfig.class,MvcConfig.class);
              
         // Register and map the dispatcher servlet
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));

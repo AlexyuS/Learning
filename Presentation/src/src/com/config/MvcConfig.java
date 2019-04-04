@@ -15,6 +15,9 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "src.com.controller"})
 public class MvcConfig implements WebMvcConfigurer {
 
+	public  MvcConfig() {
+		System.out.println("Mvc configuration was succesfully completed");
+	}
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

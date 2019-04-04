@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>Presentation</artifactId>
 	<packaging>war</packaging>
-	<name>Presentation</name>
 	<parent>
 		<relativePath>../JavaWebParent</relativePath>
 		<groupId>JavaWeb</groupId>
@@ -44,11 +43,6 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<artifactId>RestData</artifactId>
-			<groupId>JavaWeb</groupId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
@@ -57,6 +51,16 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>JavaWeb</groupId>
+			<artifactId>Database</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+			<dependency>
+			<groupId>JavaWeb</groupId>
+			<artifactId>Business</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>

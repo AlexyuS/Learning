@@ -7,6 +7,6 @@
   <modules>
   	<module>../Presentation</module>
   	<module>../Database</module>
-  	<module>../RestData</module>
+  	<module>../Business</module>
   </modules>
 </project>

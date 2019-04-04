@@ -1,6 +1,7 @@
 package src.database.config;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Properties;
 
 
@@ -12,10 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -28,10 +35,12 @@ import src.database.constants.HibernateConst;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "src.database.repositories" ,"src.restData.controller"})
-@ComponentScan(basePackages = { "src.database.services" })
 @PropertySources({ @PropertySource("classpath:application.properties"),
 		@PropertySource("classpath:hibernate.properties") })
+@EnableJpaAuditing(auditorAwareRef="auditorProvider")
+@Import(RepositoryRestMvcConfiguration .class)
+@ComponentScan("src.database.services")
+@EnableJpaRepositories("src.database.repositories")
 public class DbConfig {
 	public DbConfig() {
 		System.out.println("Database configurator is ready");
@@ -63,6 +72,18 @@ public class DbConfig {
 
 		return em;
 	}
+	
+	@Bean
+	public RepositoryRestConfigurer repositoryRestConfigurer() {
+		
+		return new RepositoryRestConfigurer() {
+			
+			@Override
+			public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+				config.setBasePath("/console");
+			}
+		};
+	}
 
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
@@ -83,6 +104,14 @@ public class DbConfig {
 
 		return dataSource;
 	}
+	
+	@Bean
+    public AuditorAware<String> auditorProvider() {    
+       // SecurityContextHolder.getContext().getAuthentication().getName();
+        return () -> Optional.ofNullable("Alexyus");
+    }
+	
+	
 
 	@PreDestroy
 	public void cleanUp() {

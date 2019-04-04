@@ -7,31 +7,57 @@
 
 </head>
 <body>
-	<form:form id="mainForm" modelAttribute="user" method="PUT"
-		action="/specialUsers">
+	<form:form id="mainForm" modelAttribute="employee" action="/Presentation"
+		method="GET">
+		<div>
+			<div>
+				<p>
+					<form:label path="username">Username</form:label>
+					<form:input path="username"></form:input>
+				<p>
+					<form:label path="username">Password</form:label>
+					<form:password path="username"></form:password>
+				<p>
+					<form:label path="jobType">JobType</form:label>
+					<form:select path="jobType">
+						<form:options items="${jobType}"></form:options>
+					</form:select>
+				<p>
+					<form:label path="firstName">FirstName</form:label>
+					<form:input path="firstName"></form:input>
+				<p>
+					<form:label path="surename">Surename</form:label>
+					<form:input path="surename"></form:input>
+				<p>
+					<form:label path="age">Age</form:label>
+					<form:input path="age"></form:input>
+				<p>
+					<form:label path="gender">Gender</form:label>
+					<form:select path="gender">
+						<form:options items="${genderList}"></form:options>
+					</form:select>
+				<p>
+					<label>Role</label>
+					<form:select path="" id="role">
+						<form:options items="${roleList}"></form:options>
+					</form:select>
+			</div>
+		</div>
+		<div>
+			<form:button class="createUser">Create</form:button>
+			<form:button class="back">Back</form:button>
+		</div>
 
-		<form:label path="firstName"></form:label>
-		<form:input path="firstName"></form:input>
-		
-		<form:label path="surename"></form:label>
-		<form:input path="surename"></form:input>
-		
-		<form:label path="age"></form:label>
-		<form:input path="age"></form:input>
-		
-		<form:label path="gender"></form:label>
-		<form:input path="gender"></form:input>
-		
-		<form:label path="role"></form:label>
-		<form:input path="role"></form:input>
-		
-		<form:button class="create"></form:button>
-		<form:button class="back"></form:button>
-		
+
+
+
+
 	</form:form>
 </body>
 <footer>
 	<script src="resources/js/libs/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/libs/jquery.serializeObject.js"></script>
 	<script src="resources/js/script.js"></script>
+
 </footer>
 </html>
